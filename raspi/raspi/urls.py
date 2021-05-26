@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from live.views import livefe,streaming,login
+from live.views import livefe,streaming,login,savedimg
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('video_feed/', livefe,name='video_feed'),
     path('streaming',streaming),
     path('accounts/',include('allauth.urls')),
+    path('streaming/<int:imgNum>/',savedimg),
     path('',login),
 
 ]

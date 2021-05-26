@@ -21,7 +21,7 @@ GPIO.setup(Echo,GPIO.IN)
 
 def ImageSave(image, distance):
     imgCount = SavedImage.objects.count()
-    cv2.imwrite(f'live/static/savedimage/{str(imgCount)}.png',image)
+    cv2.imwrite(f'live/static/savedimage/{str(imgCount)}.png',image,params=[cv2.IMWRITE_PNG_COMPRESSION,0])
     savedimage = SavedImage(UltraSonic=distance,ImageNumber=imgCount)
     savedimage.save()
     return imgCount
@@ -87,7 +87,7 @@ def gen(camera):
 
 @gzip.gzip_page
 def livefe(request):
-    try:
+    try: 
         cam = VideoCamera()
         return StreamingHttpResponse(gen(cam), content_type="multipart/x-mixed-replace;boundary=frame")
     except:  # This is bad! replace it with proper handling
@@ -98,3 +98,7 @@ def streaming(request):
 def login(request):
     return render(request,'login.html')
 
+def savedimg(request, imgNum):
+    savedimage = SavedImage.objects.filter(ImageNumber=imgNum)
+    context = {'UltraSonic': savedimage[0]['UltraSonic'], 'ImageNumber':savedimage[0]['ImageNumber'],'CreatedAt':savedimage[0]['CreatedAt']}
+    return render(request,'savedimg.html',context)
