@@ -14,11 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from live.views import livefe,index
+from django.urls import path,include
+from live.views import livefe,streaming
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('video_feed/', livefe,name='video_feed'),
-    path('',index),
+    path('streaming',streaming),
+    path('accounts/',include('allauth.urls')),
+
 ]
