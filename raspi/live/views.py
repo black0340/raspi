@@ -1,14 +1,17 @@
 from django.views.decorators import gzip
 from django.http import StreamingHttpResponse
 from django.shortcuts import render
+from .models import SavedImage
 import cv2
 import threading
 import RPi.GPIO as GPIO
 import time
 import imutils
 
+
 videosave = 0
 savetimer = 0
+distance = 0
 Trig = 11
 Echo = 12
 GPIO.setmode(GPIO.BOARD)
@@ -16,13 +19,20 @@ GPIO.setup(Trig,GPIO.OUT)
 GPIO.setup(Echo,GPIO.IN)
 
 
+def ImageSave(image, distance):
+    imgCount = SavedImage.objects.count()
+    cv2.imwrite(f'/live/static/savedimage/{str(imgCount)}.png',image,params=[cv2.IMWRITE_PNG_COMPRESSION,0])
+    savedimage = SavedImage(UltraSonic=distance,ImageNumber=imgCount)
+    savedimage.save()
+    return imgCount
+
 def controlUltra():
 
     global videosave,savetimer
     pulse_start=time.time()
     pulse_end =time.time()
     GPIO.setwarnings(False) 
-    distance=0.0
+    global distance
     GPIO.output(Trig,GPIO.LOW)
     time.sleep(0.005)
     GPIO.output(Trig,GPIO.HIGH)
@@ -64,7 +74,7 @@ class VideoCamera(object):
                 print('image saved')
                 videosave=0
                 savetimer =0
-                cv2.imwrite('p2.png',self.frame,params=[cv2.IMWRITE_PNG_COMPRESSION,0])
+                ImageSave(self.frame,distance)
             (self.grabbed, self.frame) = self.video.read()
 
 

@@ -1,3 +1,10 @@
+{% if user.is_authenticated %}
+    <script>
+        location.href = "/index/"
+    </script>
+{% else %}
+
+
 <html>
     <body>
         {% load static %}
@@ -6,3 +13,4 @@
             </a>
     </body>
 </html>
+{% endif %}
