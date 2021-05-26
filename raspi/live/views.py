@@ -21,7 +21,7 @@ GPIO.setup(Echo,GPIO.IN)
 
 def ImageSave(image, distance):
     imgCount = SavedImage.objects.count()
-    cv2.imwrite(f'/live/static/savedimage/{str(imgCount)}.png',image,params=[cv2.IMWRITE_PNG_COMPRESSION,0])
+    cv2.imwrite(f'live/static/savedimage/{str(imgCount)}.png',image)
     savedimage = SavedImage(UltraSonic=distance,ImageNumber=imgCount)
     savedimage.save()
     return imgCount
