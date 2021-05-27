@@ -100,5 +100,5 @@ def login(request):
 
 def savedimg(request, imgNum):
     savedimage = SavedImage.objects.filter(ImageNumber=imgNum)
-    context = {'result':{'UltraSonic': savedimage[0]['UltraSonic'], 'ImageNumber':savedimage[0]['ImageNumber'],'CreatedAt':savedimage[0]['CreatedAt']}}
+    context = savedimage.values()[0]
     return render(request,'savedimg.html',context)
