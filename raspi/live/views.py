@@ -1,7 +1,11 @@
 from django.views.decorators import gzip
 from django.http import StreamingHttpResponse
 from django.shortcuts import render
+from rest_framework import viewsets, status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from .models import SavedImage
+from .serializers import SavedImageSerializer
 import cv2
 import threading
 import RPi.GPIO as GPIO
@@ -103,3 +107,10 @@ def savedimg(request, imgNum):
     context = savedimage.values()[0]
     print(context)
     return render(request,'savedimg.html',context)
+
+@api_view(['GET'])
+def dbserial(request):
+    savedimage = SavedImage.objects.filter(ImageNumber=3)
+    imgserial = SavedImageSerializer(savedimage)
+    return Response(imgserial.data)
+
