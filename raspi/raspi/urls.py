@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from live.views import livefe,streaming,login,savedimg
+from live.views import livefe,streaming,login,savedimg,dbserial
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +24,6 @@ urlpatterns = [
     path('accounts/',include('allauth.urls')),
     path('streaming/<int:imgNum>/',savedimg),
     path('',login),
+    path('serial',dbserial),
 
 ]
