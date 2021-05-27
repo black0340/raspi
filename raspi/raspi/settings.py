@@ -149,3 +149,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%s',
+}
