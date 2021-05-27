@@ -6,7 +6,7 @@
         <div class = "col-lg-8 offset-lg-z">
 
             <h3 class = "mt-5"> 초음파 센서값 : {{ UltraSonic }} 생성시기 {{ CreatedAt }}</h3>
-            <img src = "{% static "image/savedimage/"+ ImageNumber %}"width = "50%", height="50%">
+            <img src = "{% static f"image/savedimage/{% ImageNumber %}"  %}"width = "50%", height="50%">
         </div>
     </div>
 </div>
