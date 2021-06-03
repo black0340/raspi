@@ -1,17 +1,18 @@
 from django.views.decorators import gzip
 from django.http import StreamingHttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import SavedImage
-from .serializers import SavedImageSerializer
+from .serializers import SavedImageSerializer,MySerializer
 import cv2
 import threading
 import RPi.GPIO as GPIO
 import time
 import imutils
-
+import webbrowser
+import os
 
 videosave = 0
 savetimer = 0
@@ -111,6 +112,23 @@ def savedimg(request, imgNum):
 @api_view(['GET'])
 def dbserial(request):
     savedimage = SavedImage.objects.filter(ImageNumber=3)
-    imgserial = SavedImageSerializer(savedimage)
+    imgserial = SavedImageSerializer(savedimage[0])
     return Response(imgserial.data)
+
+@api_view(['GET'])
+def myserial(request):
+    savedimage = SavedImage.objects.all()
+    imgserial = MySerializer(savedimage,many=True)
+    print(imgserial.data)
+    
+    url = "https://www.youtube.com/embed/lL7YiUr7-8U?autoplay=1&mute=1"
+    webbrowser.open(url)
+    
+    return Response(imgserial.data)
+
+def videourl(request, url):
+    openurl = "https://www.youtube.com/embed/"+url+"?autoplay=1&mute=1"
+    webbrowser.open(openurl)
+    return HttpResponse(url+" play")
+    
 

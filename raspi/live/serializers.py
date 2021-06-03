@@ -5,4 +5,9 @@ class SavedImageSerializer(serializers.ModelSerializer):
     class Meta: 
         model = SavedImage # 모델 설정
         fields = ('UltraSonic','ImageNumber','CreatedAt') # 필드 설정
+        
+class MySerializer(serializers.ModelSerializer): 
+    class Meta: 
+        model = SavedImage # 모델 설정
+        fields = ('UltraSonic','CreatedAt') # 필드 설정
 
