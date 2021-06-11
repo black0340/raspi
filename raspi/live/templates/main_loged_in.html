@@ -1,3 +1,4 @@
+{% if user.is_authenticated %}
 <html>
     <head>
 	<meta charset="utf-8">
@@ -64,10 +65,10 @@
             	</div>
 		<div class="button-view">
 			<a href="/streaming">
-				<img class="img-btn" src="{% static 'image/streaming.png' %}">
+				<img class="img-btn" src="{% static 'image/streaming.png' %}" alt="실시간 스트리밍">
 			</a>
 			<a href="/youtube/<str:url>">
-				<img class="img-btn" src="{% static 'image/youtube.png' %}">
+				<img class="img-btn" src="{% static 'image/youtube.png' %}" alt="영상 재생">
 			</a>
 			
 		</div>
@@ -75,3 +76,9 @@
             
     </body>
 </html>
+{% else %}
+    <script>
+	alert('로그인이 필요합니다.');
+        location.href = "/"
+    </script>
+{% endif %}
