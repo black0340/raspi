@@ -20,11 +20,11 @@ from live.views import livefe,streaming,login,main_loged_in,savedimg,dbserial,my
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('video_feed/', livefe,name='video_feed'),
-    path('streaming',streaming),
+    path('streaming/',streaming),
     path('accounts/',include('allauth.urls')),
     path('streaming/<int:imgNum>/',savedimg),
     path('',login),
-    path('main_loged_in',main_loged_in),
+    path('main_loged_in/',main_loged_in),
     path('serial',dbserial),
     path('myserial',myserial),
     path('youtube/<str:url>',videourl),

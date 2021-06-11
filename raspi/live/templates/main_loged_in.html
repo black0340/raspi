@@ -1,10 +1,3 @@
-{% if user.is_authenticated %}
-    <script>
-        location.href = "/index/"
-    </script>
-{% else %}
-
-
 <html>
     <head>
 	<meta charset="utf-8">
@@ -70,11 +63,15 @@
                 	<img class="logo" src="{% static 'image/logo.png' %}">
             	</div>
 		<div class="button-view">
-			<img class="img-btn" src="{% static 'image/streaming.png' %}">
-			<img class="img-btn" src="{% static 'image/youtube.png' %}">
+			<a href="/streaming">
+				<img class="img-btn" src="{% static 'image/streaming.png' %}">
+			</a>
+			<a href="/youtube/<str:url>">
+				<img class="img-btn" src="{% static 'image/youtube.png' %}">
+			</a>
+			
 		</div>
 	</div>
             
     </body>
 </html>
-{% endif %}
