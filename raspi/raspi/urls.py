@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from live.views import livefe,streaming,login,savedimg,dbserial,myserial,videourl
+from live.views import livefe,streaming,login,main_loged_in,savedimg,dbserial,myserial,videourl
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,7 @@ urlpatterns = [
     path('accounts/',include('allauth.urls')),
     path('streaming/<int:imgNum>/',savedimg),
     path('',login),
+    path('main_loged_in',main_loged_in),
     path('serial',dbserial),
     path('myserial',myserial),
     path('youtube/<str:url>',videourl),

@@ -97,12 +97,14 @@ def livefe(request):
         return StreamingHttpResponse(gen(cam), content_type="multipart/x-mixed-replace;boundary=frame")
     except:  # This is bad! replace it with proper handling
         pass
-
 def streaming(request):
     return render(request,'index.html')
 
 def login(request):
     return render(request,'login.html')
+
+def main_loged_in(request):
+    return render(request,'main_loged_in.html')
 
 def savedimg(request, imgNum):
     savedimage = SavedImage.objects.filter(ImageNumber=imgNum)

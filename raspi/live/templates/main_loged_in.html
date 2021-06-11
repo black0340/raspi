@@ -36,12 +36,19 @@
 		    width: auto;
 		    height: 100vh;
 		}
-		.loginbutton {
+		.button-view {
 		    position: absolute;
-		    top: 80vh;
+		    
+		    top: 75vh;
 		    left: 50%;
   		    transform: translateX(-50%);
-		    border: solid 5px #53435B;
+		}
+		.img-btn {
+		    width: 100px;
+		    height: auto;
+		    padding: 10px;
+		    margin-left: 100px;
+		    margin-right: 100px;
 		}
 		@font-face {
 		    font-family: "Spoqa Han Sans Neo";
@@ -62,9 +69,10 @@
 		<div class="logo-view">
                 	<img class="logo" src="{% static 'image/logo.png' %}">
             	</div>
-            	<a href='/accounts/kakao/login/'>
-                	<img class = "loginbutton" src="{% static 'image/kakao_login.png' %}" alt="카카오 로그인">
-            	</a>
+		<div class="button-view">
+			<img class="img-btn" src="{% static 'image/streaming.png' %}">
+			<img class="img-btn" src="{% static 'image/youtube.png' %}">
+		</div>
 	</div>
             
     </body>
