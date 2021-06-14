@@ -12,7 +12,8 @@ import RPi.GPIO as GPIO
 import time
 import imutils
 import webbrowser
-import os
+import os,time
+import pyautogui
 
 videosave = 0
 savetimer = 0
@@ -130,8 +131,10 @@ def myserial(request):
     return Response(imgserial.data)
 
 def videourl(request, url):
-    openurl = "https://www.youtube.com/embed/"+url+"?autoplay=1&mute=1"
+    openurl = "https://www.youtube.com/embed/"+url+"?autoplay=1"
     webbrowser.open(openurl)
+    time.sleep(3)
+    pyautogui.click(x=1146,y=1061)
     return Response(url+" play")
     
 def urlget(request):
