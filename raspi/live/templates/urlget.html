@@ -79,7 +79,9 @@
 <script>
     function clicked() {
         const url = document.getElementById('url').value;
-        location.href = "/youtube/" + url alert("영상 재생!") window.opener.location.reload();
+        location.href = "/youtube/" + url;
+        alert("영상 재생!");
+        window.opener.location.reload();
         window.close();
     }
 </script>
