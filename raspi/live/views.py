@@ -50,7 +50,7 @@ def controlUltra():
     pulse_duration = pulse_end - pulse_start
     distance = pulse_duration * 17000
     distance = round(distance,2)
-    if distance>50 and savetimer >20:
+    if distance<20 and savetimer >20:
         videosave = 1
         print(distance)
     savetimer += 1
