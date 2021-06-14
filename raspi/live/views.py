@@ -135,4 +135,5 @@ def videourl(request, url):
     return Response(url+" play")
     
 def urlget(request):
+    return render(request,"urlget.html")
 
