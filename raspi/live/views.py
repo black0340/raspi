@@ -132,6 +132,7 @@ def myserial(request):
 def videourl(request, url):
     openurl = "https://www.youtube.com/embed/"+url+"?autoplay=1&mute=1"
     webbrowser.open(openurl)
-    return HttpResponse(url+" play")
+    return Response(url+" play")
     
+def urlget(request):
 

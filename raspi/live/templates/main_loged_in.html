@@ -67,13 +67,24 @@
 			<a href="/streaming">
 				<img class="img-btn" src="{% static 'image/streaming.png' %}" alt="실시간 스트리밍">
 			</a>
-			<a href="/youtube/<str:url>">
+			<a onclick="LoginClick()">
 				<img class="img-btn" src="{% static 'image/youtube.png' %}" alt="영상 재생">
 			</a>
 			
 		</div>
 	</div>
-            
+    <script>
+	function LoginClick() {
+    window.name = "mainForm"
+
+    openWin = window.open("/urlget", 'loginForm', 'width=570 ,height =350, resizable=no, scrollbars= no');
+
+
+
+    return false;
+
+}
+	</script>
     </body>
 </html>
 {% else %}
