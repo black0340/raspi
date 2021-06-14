@@ -1,110 +1,110 @@
 {% if user.is_authenticated %}
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Pet Sitter</title>
-        <style type="text/css">
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                background-color: #53435B;
-                font-family: Spoqa Han Sans Neo;
-                -ms-user-select: none;
-                -moz-user-select: -moz-none;
-                -webkit-user-select: none;
-                -khtml-user-select: none;
-                user-select: none;
-            }
-            
-            .container {
-                width: 570px;
-                height: 350px;
-                text-align: center;
-            }
-            
-            h2 {
-                font-family: Spoqa Han Sans Neo;
-                color: #53435B;
-            }
-            
-            .main-view {
-                width: 350px;
-                height: 350px;
-                background-color: #FBD157;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .play-view {
-                width: 240px;
-                height: 135px;
-                background-color: #FBD157;
-                border: 10px solid #53435B;
-                box-sizing: border-box;
-                margin-top: auto;
-                margin-bottom: auto;
-                margin-left: auto;
-                margin-right: auto;
-            }
 
-            .btn-view {
-                position: absolute;
-		    
-                top: 200px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .img-btn {
-                width: 50px;
-                height: auto;
-                padding: 10px;
-            }
-            
-            @font-face {
-                font-family: "Spoqa Han Sans Neo";
-                font-style: normal;
-                font-weight: 500;
-                src: url(/static/font/SpoqaHanSansNeo-Thin.eot);
-                /* IE9 Compat Modes */
-                src: url(/static/font/SpoqaHanSansNeo-Thin.eot?#iefix) format("embedded-opentype"), /* IE6-8 */
-                url(/static/font/SpoqaHanSansNeo-Thin.woff) format("woff"), /* Mordern Browsers */
-                url(/static/font/SpoqaHanSansNeo-Thin.otf) format("opentype");
-                /* If not support woff */
-            }
-        </style>
-    </head>
-
-    <body>
-        {% load static %}
-        <div class="container">
-            <div class="main-view">
-                <div class="play-view">
-                    <h2>URL 끝부분을 입력해주세요.</h2>
-                    <input type="text" id="url">
-                    <div class="button-view">
-                        <img class="img-btn" src="{%static 'image/play.png' %}" onclick="clicked()">
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </body>
-    <script>
-        function clicked() {
-            const url = document.getElementById('url').value;
-            location.href = "/youtube/" + url;
-            alert("영상 재생!");
-            window.opener.location.reload();
-            window.close();
+<head>
+    <meta charset="utf-8">
+    <title>Pet Sitter</title>
+    <style type="text/css">
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #53435B;
+            font-family: Spoqa Han Sans Neo;
+            -ms-user-select: none;
+            -moz-user-select: -moz-none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
         }
-    </script>
+        
+        .container {
+            width: 570px;
+            height: 350px;
+            text-align: center;
+        }
+        
+        h2 {
+            font-family: Spoqa Han Sans Neo;
+            color: #53435B;
+        }
+        
+        .main-view {
+            width: 350px;
+            height: 350px;
+            background-color: #FBD157;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .play-view {
+            width: 240px;
+            height: 135px;
+            background-color: #FBD157;
+            border: 10px solid #53435B;
+            box-sizing: border-box;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn-view {
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .img-btn {
+            width: 50px;
+            height: auto;
+            padding: 10px;
+        }
+        
+        @font-face {
+            font-family: "Spoqa Han Sans Neo";
+            font-style: normal;
+            font-weight: 500;
+            src: url(/static/font/SpoqaHanSansNeo-Thin.eot);
+            /* IE9 Compat Modes */
+            src: url(/static/font/SpoqaHanSansNeo-Thin.eot?#iefix) format("embedded-opentype"), /* IE6-8 */
+            url(/static/font/SpoqaHanSansNeo-Thin.woff) format("woff"), /* Mordern Browsers */
+            url(/static/font/SpoqaHanSansNeo-Thin.otf) format("opentype");
+            /* If not support woff */
+        }
+    </style>
+</head>
+
+<body>
+    {% load static %}
+    <div class="container">
+        <div class="main-view">
+            <div class="play-view">
+                <h2>URL 끝부분을 입력해주세요.</h2>
+                <input type="text" id="url">
+                <div class="button-view">
+                    <img class="img-btn" src="{%static 'image/play.png' %}" onclick="clicked()">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    function clicked() {
+        const url = document.getElementById('url').value;
+        location.href = "/youtube/" + url;
+        alert("영상 재생!");
+        window.opener.location.reload();
+        window.close();
+    }
+</script>
 <html>
 
 {% else %}
-    <script>
-	alert('로그인이 필요합니다.');
-        location.href = "/"
-    </script>
+<script>
+    alert('로그인이 필요합니다.');
+    location.href = "/"
+</script>
 {% endif %}
