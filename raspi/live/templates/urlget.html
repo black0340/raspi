@@ -21,39 +21,40 @@
                 width: 570px;
                 height: 350px;
                 text-align: center;
-            }
-            
-            h2 {
-                font-family: Spoqa Han Sans Neo;
-                color: #53435B;
-            }
-            
-            .main-view {
-                width: 350px;
-                height: 350px;
-                background-color: #FBD157;
                 margin-left: auto;
                 margin-right: auto;
             }
             
+            label {
+                font-family: Spoqa Han Sans Neo;
+                font-weight: bolder;
+                color: #53435B;
+                margin-top: 10px;
+            }
+            
+            .main-view {
+                display: grid;
+                place-items: center;
+                width: 350px;
+                height: 350px;
+                background-color: #FBD157;
+            }
+            
             .play-view {
+                display: inline-block;
                 width: 240px;
                 height: 135px;
                 background-color: #FBD157;
                 border: 10px solid #53435B;
                 box-sizing: border-box;
-                margin-top: auto;
-                margin-bottom: auto;
                 margin-left: auto;
                 margin-right: auto;
             }
 
-            .btn-view {
-                position: absolute;
-		    
-                top: 200px;
-                left: 50%;
-                transform: translateX(-50%);
+            .type-url {
+                background-color: #FFFFFF;
+                border: 5px solid #53435B;
+                box-sizing: border-box;
             }
 
             .img-btn {
@@ -81,11 +82,9 @@
         <div class="container">
             <div class="main-view">
                 <div class="play-view">
-                    <h2>URL 끝부분을 입력해주세요.</h2>
-                    <input type="text" id="url">
-                    <div class="button-view">
-                        <img class="img-btn" src="{%static 'image/play.png' %}" onclick="clicked()">
-                    </div>
+                    <label>URL 끝부분을 입력해주세요.</label>
+                    <input class="type-url" type="text" id="url">
+                    <img class="img-btn" src="{%static 'image/play.png' %}" onclick="clicked()">
                 </div>
                 
             </div>
@@ -101,10 +100,9 @@
         }
     </script>
 <html>
-
 {% else %}
     <script>
-	alert('로그인이 필요합니다.');
+    alert('로그인이 필요합니다.');
         location.href = "/"
     </script>
 {% endif %}
