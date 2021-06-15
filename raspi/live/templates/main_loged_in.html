@@ -62,9 +62,6 @@
 	<div class="container">
 		
 		<div class="logo-view">
-		<a>
-			{{ user.username }}님 안녕하세요!
-		</a>
                 	<img class="logo" src="{% static 'image/logo.png' %}">
             	</div>
 		<div class="button-view">
@@ -81,6 +78,7 @@
 		</div>
 	</div>
     <script>
+	alert("안녕하세요 {{user.username}}님")
 	function LoginClick() {
     window.name = "mainForm"
 
