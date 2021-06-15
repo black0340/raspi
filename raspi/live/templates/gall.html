@@ -61,7 +61,7 @@
         {% load static %}
 	<div class="container">
         {% for i in i.all %}
-        <h1 href="/streaming/{{i.ImageNumber}}"></h1>
+        <h1 href="/streaming/{{i.ImageNumber}}">{{i.ImageNumber}}</h1>
         <p> {{i.CreatedAt}} </p>
         {% endfor %}
 	</div>
