@@ -41,9 +41,15 @@
 		    width: 70px;
 		    height: auto;
 		    padding: 10px;
-		    margin-left: 100px;
-		    margin-right: 100px;
+		    margin-left: 50px;
+		    margin-right: 50px;
+		    box-sizing: border-box;
 		}
+
+		.img-btn:hover {
+		    border: 5px solid #53435B;
+		}
+
 		@font-face {
 		    font-family: "Spoqa Han Sans Neo";
 		    font-style: normal;
@@ -69,7 +75,7 @@
 				<img class="img-btn" src="{% static 'image/streaming.png' %}" alt="실시간 스트리밍">
 			</a>
 			<a href="/gall">
-				<img class="img-btn" src="{% static 'image/gall.png' %}" alt="실시간 스트리밍">
+				<img class="img-btn" src="{% static 'image/gall.png' %}" alt="갤러리">
 			</a>
 			<a onclick="LoginClick()" style="cursor: pointer;">
 				<img class="img-btn" src="{% static 'image/youtube.png' %}" alt="영상 재생">

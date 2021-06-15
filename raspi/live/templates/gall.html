@@ -15,6 +15,10 @@
 		    -khtml-user-select: none;
 		    user-select: none;
 		}
+		
+		a, a:hover {
+		    text-decoration:none !important;
+		}
 
 		.container {
 		    width: 100vw;
@@ -22,28 +26,58 @@
 		    text-align: center;
 		}
 
-		.logo-view {
-		    width: auto;
-		    height: 100vh;
+		h1, h2 {
+		    padding-top: 5vh;
+		    font-family: Spoqa Han Sans Neo;
+		    color: #53435B;
 		}
-		.logo {
-		    width: auto;
-		    height: 100vh;
+
+		hr {
+		    background-color: #53435B;
+		    height: 5px;
+		    border: 0px;
 		}
+
+		.main-view {
+		    width: 100vh;
+		    height: 100vh;
+		    background-color: #FBD157;
+		    border: 0px;
+		    margin-left: auto;
+		    margin-right: auto;
+		}
+
+		.gallery-view {
+		    display: block;
+		    overflow-y: scroll;
+		    width: 70vh;
+		    height: 70vh;
+		    background-color: #FBD157;
+		    border: 10px solid #53435B;
+		    box-sizing: border-box;
+		    margin-left: auto;
+		    margin-right: auto;
+		}
+
 		.button-view {
 		    position: absolute;
 		    
-		    top: 75vh;
+		    top: 85vh;
 		    left: 50%;
   		    transform: translateX(-50%);
 		}
 		.img-btn {
-		    width: 100px;
+		    width: 70px;
 		    height: auto;
 		    padding: 10px;
 		    margin-left: 100px;
 		    margin-right: 100px;
+		    box-sizing: border-box;
 		}
+		.img-btn:hover {
+		    border: 5px solid #53435B;
+		}
+
 		@font-face {
 		    font-family: "Spoqa Han Sans Neo";
 		    font-style: normal;
@@ -59,17 +93,26 @@
     </head>
     <body>
         {% load static %}
-	<div class="container">
-        {% for i in i.all %}
-        <a href="/streaming/{{i.ImageNumber}}">
-        <h1>{{i.ImageNumber}}</h1>
-        </a>
-        <p> {{i.CreatedAt}} </p>
-        {% endfor %}
-	</div>
-    <script>
+		<div class="container">
+			<div class="main-view">
+				<h1>Gallery</h1>
+				<div class="gallery-view">
+					{% for i in i.all %}
+					<a href="/streaming/{{i.ImageNumber}}">
+						<h2>Image {{i.ImageNumber}}</h2>
+					</a>
+					<p> {{i.CreatedAt}} </p>
+					<hr>
+					{% endfor %}
+				</div>
+				<div class="button-view">
+					<a href="/main_loged_in">
+						<img class="img-btn" src="{% static 'image/home.png' %}" alt="홈으로">
+					</a>
+				</div>
+			</div>
+		</div>
 
-	</script>
     </body>
 </html>
 {% else %}

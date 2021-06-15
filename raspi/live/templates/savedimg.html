@@ -1,6 +1,9 @@
 {% if user.is_authenticated %}
 {% load static %}
 <html>
+<head>
+	<meta charset="utf-8">
+	<title>Pet Sitter</title>
 	<style type="text/css">
 		html, body {
 		    margin: 0;
@@ -13,6 +16,12 @@
 		    -khtml-user-select: none;
 		    user-select: none;
 		}
+		
+		h1, h2 {
+		    padding-top: 5vh;
+		    font-family: Spoqa Han Sans Neo;
+		    color: #53435B;
+		}
 
 		.container {
 		    width: 100vw;
@@ -20,28 +29,46 @@
 		    text-align: center;
 		}
 
-		.logo-view {
-		    width: auto;
+		.main-view {
+		    width: 100vh;
 		    height: 100vh;
+		    background-color: #FBD157;
+		    border: 0px;
+		    margin-left: auto;
+		    margin-right: auto;
 		}
-		.logo {
-		    width: auto;
-		    height: 100vh;
+
+		.img-view {
+		    width: 70vh;
+		    height: 70vh;
+		    background-color: #FBD157;
+		    border: 10px solid #53435B;
+		    box-sizing: border-box;
+		    margin-left: auto;
+		    margin-right: auto;
 		}
+
 		.button-view {
 		    position: absolute;
 		    
-		    top: 75vh;
+		    top: 85vh;
 		    left: 50%;
   		    transform: translateX(-50%);
 		}
+
 		.img-btn {
-		    width: 100px;
+		    width: 70px;
 		    height: auto;
 		    padding: 10px;
-		    margin-left: 100px;
-		    margin-right: 100px;
+		    margin-left: 50px;
+		    margin-right: 50px;
+		    box-sizing: border-box;
 		}
+
+		.img-btn:hover {
+		    border: 5px solid #53435B;
+		}
+
 		@font-face {
 		    font-family: "Spoqa Han Sans Neo";
 		    font-style: normal;
@@ -54,15 +81,24 @@
 		    /* If not support woff */
 		}
 	</style>
+</head>
+	
 <body>
 <div class = "container">
-    <div class ="row">
-        <div class = "col-lg-8 offset-lg-z">
-
-            <h3 class = "mt-5"> 초음파 센서값 : {{ UltraSonic }} 생성시기 {{ CreatedAt }}</h3>
-            <img src = "/static/savedimage/{{ ImageNumber }}.png"width = "50%", height="50%">
-        </div>
-    </div>
+	<div class="main-view">
+		<h2>{{ CreatedAt }}</h2>
+		<div class="img-view">
+            		<img src = "/static/savedimage/{{ ImageNumber }}.png"width = "100%", height="100%">
+		</div>
+		<div class="button-view">
+			<a href="/gall">
+				<img class="img-btn" src="{% static 'image/undo.png' %}" alt="홈으로">
+			</a>
+			<a href="/main_loged_in">
+				<img class="img-btn" src="{% static 'image/home.png' %}" alt="홈으로">
+			</a>
+		</div>
+	</div>
 </div>
 </body>
 {% else %}
