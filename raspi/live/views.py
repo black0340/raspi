@@ -141,4 +141,5 @@ def urlget(request):
     return render(request,"urlget.html")
 
 def gall(request):
-    return render(request, "gall.html")
+    i = SavedImage.objects
+    return render(request, "gall.html",{'i':i})
