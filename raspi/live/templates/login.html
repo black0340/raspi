@@ -1,5 +1,6 @@
 {% if user.is_authenticated %}
     <script>
+		alert("안녕하세요 {{user.username}}님")
         location.href = "/main_loged_in/"
     </script>
 {% else %}

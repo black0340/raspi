@@ -1,5 +1,59 @@
 {% if user.is_authenticated %}
 {% load static %}
+<html>
+	<style type="text/css">
+		html, body {
+		    margin: 0;
+		    padding: 0;
+		    background-color: #53435B;
+		    font-family: Spoqa Han Sans Neo;
+		    -ms-user-select: none;
+		    -moz-user-select: -moz-none;
+		    -webkit-user-select: none;
+		    -khtml-user-select: none;
+		    user-select: none;
+		}
+
+		.container {
+		    width: 100vw;
+		    height: 100vh;
+		    text-align: center;
+		}
+
+		.logo-view {
+		    width: auto;
+		    height: 100vh;
+		}
+		.logo {
+		    width: auto;
+		    height: 100vh;
+		}
+		.button-view {
+		    position: absolute;
+		    
+		    top: 75vh;
+		    left: 50%;
+  		    transform: translateX(-50%);
+		}
+		.img-btn {
+		    width: 100px;
+		    height: auto;
+		    padding: 10px;
+		    margin-left: 100px;
+		    margin-right: 100px;
+		}
+		@font-face {
+		    font-family: "Spoqa Han Sans Neo";
+		    font-style: normal;
+		    font-weight: 500;
+		    src: url(/static/font/SpoqaHanSansNeo-Thin.eot);
+		    /* IE9 Compat Modes */
+		    src: url(/static/font/SpoqaHanSansNeo-Thin.eot?#iefix) format("embedded-opentype"), /* IE6-8 */
+		    url(/static/font/SpoqaHanSansNeo-Thin.woff) format("woff"), /* Mordern Browsers */
+		    url(/static/font/SpoqaHanSansNeo-Thin.otf) format("opentype");
+		    /* If not support woff */
+		}
+	</style>
 <body>
 <div class = "container">
     <div class ="row">
@@ -17,3 +71,4 @@
         location.href = "/";
     </script>
 {% endif %}
+</html>
