@@ -140,3 +140,5 @@ def videourl(request, url):
 def urlget(request):
     return render(request,"urlget.html")
 
+def gall(request):
+    return render(request, "gall.html")
